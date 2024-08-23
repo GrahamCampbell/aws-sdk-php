@@ -775,7 +775,7 @@ class ClientResolver
                     ? $value['services'][$args['service']]['endpoints']
                     : null;
             if (isset($serviceEndpoints[$args['region']]['deprecated'])) {
-                trigger_error("The service " . $args['service'] . "has "
+                @trigger_error("The service " . $args['service'] . "has "
                     . " deprecated the region " . $args['region'] . ".",
                     E_USER_WARNING
                 );
@@ -1443,7 +1443,7 @@ EOT;
     private static function emitDeprecationWarning()
     {
         $phpVersionString = phpversion();
-        trigger_error(
+        @trigger_error(
             "This installation of the SDK is using PHP version"
             .  " {$phpVersionString}, which will be deprecated on January"
             .  " 13th, 2025.\nPlease upgrade your PHP version to a minimum of"
